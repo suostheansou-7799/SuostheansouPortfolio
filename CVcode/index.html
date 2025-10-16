@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | SUOS THEANSOU</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            background: url("https://scontent-sin2-1.xx.fbcdn.net/v/t39.30808-6/477580467_1379289883235283_7063858664619241985_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=-3cHvhSOhN4Q7kNvwFev6ZT&_nc_oc=AdkJ1Zh-9-gMZj6BKtxOdpWjsDkrTcKdq_GsgY6a8k1EFEh95eySVtTJXcbrJBPhE_o&_nc_zt=23&_nc_ht=scontent-sin2-1.xx&_nc_gid=P9pEw0NPrsaYvzO470eZGg&oh=00_Afejr7IGyn-Szz_GFM7dySuNAgjkmkbSbn7u48xGUeYgtA&oe=68F289CC") no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            color: #fff;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid #bdbdbd;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #facc15;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 5px;
+            color: #fff;
+        }
+        
+        p {
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        a.button {
+            display: inline-block;
+            text-decoration: none;
+            background: #facc15;
+            color: #1f2937;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        
+        a.button:hover {
+            background: #ffe55c;
+            transform: scale(1.05);
+        }
+        
+        .social {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .social a {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 12px;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.95em;
+        }
+        
+        .social a:hover {
+            background: #facc15;
+            color: #1f2937;
+            transform: translateY(-3px);
+        }
+        /* Contact Buttons */
+        
+        .contact {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .contact a {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        
+        .contact a:hover {
+            background: #facc15;
+            color: #1f2937;
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay"></div>
+
+    <div class="container">
+        <img src="Profile2.jpg" alt="SUOS THEANSOU" class="profile-img">
+
+        <h1>SUOS THEANSOU</h1>
+        <h3>IT Supporter & Network Maintenance</h3>
+        <p>
+            Hello! I’m an IT Supporter at the <strong>General Department of National Treasury</strong>.<br> I specialize in maintaining network systems, software installation, and providing tech support.<br> Passionate about technology, web development,
+            and cybersecurity.
+        </p>
+
+        <a href="cv.html" target="_blank" class="button">📄 View My CV</a>
+
+        <div class="social">
+            <a href="https://www.facebook.com/profile.php?id=61559033744548">Facebook Page</a>
+            <a href="https://www.facebook.com/theansou.suos" target="_blank">Facebook</a>
+            <a href="https://www.tiktok.com/@s.theansou?lang=en" target="_blank">TikTok</a>
+            <a href="https://www.youtube.com/@Suostheansou" target="_blank">YouTube</a>
+            <a href="https://t.me/070605799" target="_blank">Telegram</a>
+            <a href="https://www.linkedin.com/in/suos-theansou-604b372bb/" target="_blank">LinkedIn</a>
+            <a href="https://www.khmer24.com/en/account" target="_blank">Khmer24</a>
+        </div>
+
+        <div class="contact">
+            <a href="tel:+85570605799"> Call: +855 70 605 799</a>
+            <a href="mailto:suostheansou@gmail.com"> Mail: Suostheansou@gmail.com</a>
+        </div>
+
+        <footer>
+            © 2025 SUOS THEANSOU | General Department of National Treasury
+        </footer>
+    </div>
+</body>
+
+</html>

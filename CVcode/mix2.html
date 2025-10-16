@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUOS THEANSOU | IT Supporter</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #222;
+            background: #f2f4f8;
+        }
+
+        /* SECTION 1 - HOME (Full Glass Effect) */
+
+        .home {
+            height: 100vh;
+            /* ⚠️ ត្រូវជំនួស 'background.jpg' ដោយរូបភាពផ្ទៃខាងក្រោយរបស់អ្នក ⚠️ */
+            background: url('background.jpg') no-repeat center center/cover; 
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Full-page liquid glass effect (::before) */
+
+        .home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            z-index: -1;
+        }
+
+        .home img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+        }
+
+        .home h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+
+        .home h3 {
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin-top: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .home p {
+            margin-top: 15px;
+            font-size: 1.05em;
+            max-width: 700px;
+            color: #f0f0f0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btns {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btns a {
+            text-decoration: none;
+            background: #facc15;
+            color: #1f2937;
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btns a:hover {
+            background: #e0a800;
+            color: #1f2937;
+            transform: translateY(-2px);
+        }
+
+        .social {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social a {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: 0.3s;
+            font-size: 0.9em;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .social a i {
+            font-size: 1.1em;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .social a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: #1f2937;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* NEW CV SECTION STYLING (Part-by-Part Pop-up) */
+
+        #cv {
+            background: #f2f4f8;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .cv-part {
+            max-width: 900px;
+            min-height: 250px;
+            margin: 50px auto;
+            padding: 40px 50px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .cv-part h2 {
+            font-size: 2.2em;
+            color: #1f2937;
+            text-align: left;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #facc15;
+            display: inline-flex;
+            align-items: center;
+            padding-bottom: 5px;
+            gap: 15px;
+        }
+
+        .cv-part h2 i {
+            font-size: 1.1em;
+            color: #1f2937;
+        }
+        
+        /* 🌟 SCROLL ANIMATION CSS (សំខាន់) 🌟 */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px); /* ចាប់ផ្តើមពីខាងក្រោមបន្តិច */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* ល្បឿនលេចចេញ */
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* បញ្ចប់ SCROLL ANIMATION CSS */
+        
+        /* General content styling */
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li::before {
+            content: "▶ ";
+            color: #facc15;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .cv-part ul li {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        /* Language Skill bars */
+
+        .language-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .language-item strong {
+            width: 150px;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            flex-grow: 1;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-left: 10px;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: #facc15;
+            border-radius: 5px;
+        }
+
+        /* Work and Education styling */
+
+        .work-details,
+        .education-details {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 5px solid #facc15;
+            background: #f9fafb;
+            border-radius: 5px;
+        }
+
+        .work-details p strong,
+        .education-details p strong {
+            display: block;
+            color: #1f2937;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .work-details ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .work-details ul li::before {
+            content: none;
+        }
+
+        /* SECTION 3 - CONTACT */
+
+        .contact-section {
+            background: #1f2937;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 2em;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .contact-section h2 i {
+            color: #facc15;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 25px;
+            margin: 10px;
+            display: inline-block;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-links a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            color: #1f2937;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+
+        .footer {
+            background: #facc15;
+            color: #1f2937;
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="home" id="home">
+
+        <img src="Profile2.jpg" alt="SUOS THEANSOU"> 
+        <h1>SUOS THEANSOU</h1>
+        <h3>IT Supporter | Network Maintenance</h3>
+        <p>
+            Hello! I’m an IT Supporter at the <strong>General Department of National Treasury</strong>. I specialize in maintaining network systems, software installation, and providing tech support. Passionate about technology, web development, and cybersecurity.
+        </p>
+        <div class="btns">
+            <a href="#cv"><i class="fas fa-file-alt"></i> View My Portfolio</a>
+            
+            <a href="https://drive.google.com/file/d/13BWN6sKz4tNxuOgMEhSvEdv4UdZ4QdZ1/view?usp=drive_link" target="_blank"><i class="fas fa-download"></i> Download CV</a>
+            
+            <a href="#contact"><i class="fas fa-headset"></i> Contact Me</a> 
+        </div>
+
+        <div class="social">
+            <a href="https://drive.google.com/file/d/1HklBsCqNTpwwLC5JMWLdM8LE7qc7OavP/view?usp=drive_link" target="_blank"><i class="fas fa-award"></i> CCNA Certificate</a>
+            
+            <a href="https://www.facebook.com/profile.php?id=61559033744548" target="_blank"><i class="fas fa-users"></i> Facebook Page</a>
+            <a href="https://www.facebook.com/theansou.suos" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="https://www.tiktok.com/@s.theansou?lang=en" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+            <a href="https://www.youtube.com/@Suostheansou" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+            <a href="https://t.me/Theansou" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="https://www.linkedin.com/in/suos-theansou-604b372bb/" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://www.khmer24.com/en/account" target="_blank"><i class="fas fa-sign-in-alt"></i> Khmer24</a>
+        </div>
+    </section>
+
+    <div id="cv">
+
+        <section class="cv-part hidden" id="profile">
+            <h2><i class="fas fa-user-circle"></i> Profile</h2>
+            <p>Motivated and detail-oriented IT Supporter with a strong foundation in computer science, currently pursuing a Bachelor's Degree at the Royal University of Phnom Penh. Experienced in installing and maintaining software, troubleshooting hardware
+                and network issues, and providing reliable technical support in government institutions. Demonstrates initiative, responsibility, and a passion for solving real-world IT problems through practical application. Fluent in Khmer and possesses
+                intermediate English communication skills. Seeking to grow technical expertise while contributing to organizational success.</p>
+        </section>
+
+        <section class="cv-part hidden" id="objective">
+            <h2><i class="fas fa-bullseye"></i> Career Objective</h2>
+            <p>To apply the IT knowledge and skills gained during my university studies to real-world challenges. I strive to gain hands-on experience, strengthen my technical abilities, and contribute to solving organizational IT problems. Additionally,
+                I aim to grow professionally while earning an income to support my everyday life.</p>
+        </section>
+
+        <section class="cv-part hidden" id="experience">
+            <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+
+            <div class="work-details">
+                <p><strong>IT Supporter – Government Institution</strong><br> February 27, 2024 – Present | Phnom Penh, Cambodia</p>
+                <ul>
+                    <li>Provided day-to-day IT support to staff across departments, ensuring minimal downtime and efficient operation.</li>
+                    <li>Installed and maintained Windows OS and various essential software applications.</li>
+                    <li>Set up, configured, and repaired printers and other peripheral devices.</li>
+                    <li>Diagnosed and resolved hardware and software issues, including network connectivity problems.</li>
+                    <li>Collaborated with team members to improve IT workflow and troubleshoot recurring technical problems.</li>
+                    <li>Assisted in documenting technical issues and solutions for internal knowledge sharing.</li>
+                </ul>
+            </div>
+
+            <div class="work-details">
+                <p><strong>Participant - Social Affairs Workshop</strong><br> May 23, 2025</p>
+                <ul>
+                    <li>Headquarters of the Cambodian People's Party, Phnom Penh</li>
+                    <li>Attended a government-organized workshop on social responsibility and public service.</li>
+                    <li>Learned about national strategies related to community development and citizen engagement.</li>
+                    <li>Gained firsthand experience through discussions with officials and professionals from various sectors.</li>
+                    <li>Strengthened soft skills such as communication, collaboration, and civic awareness.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-part hidden" id="education">
+            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+
+            <div class="education-details">
+                <p><strong>Bachelor's Degree in Computer Science (In Progress)</strong><br>Royal University of Phnom Penh (RUPP) - Since 2024</p>
+            </div>
+            <div class="education-details">
+                <p><strong>High School Diploma</strong><br>Kandal Province, Cambodia - Completed in 2023</p>
+            </div>
+        </section>
+
+        <section class="cv-part hidden" id="certifications">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="work-details">
+                <p><strong>CCNA: Cisco Certified Network Associate</strong><br> Cisco Systems | View Online</p>
+                <p>Completed the foundational certification for networking professionals, covering network access, IP connectivity, and security fundamentals, demonstrating competency in managing and troubleshooting essential network devices.</p>
+                <a href="https://drive.google.com/file/d/1HklBsCqNTpwwLC5JMWLdM8LE7qc7OavP/view?usp=drive_link" target="_blank" style="display:inline-block; margin-top:10px; color:#1f2937; text-decoration:none; font-weight:bold;"><i class="fas fa-external-link-alt"></i> View Certificate</a>
+            </div>
+        </section>
+
+
+        <section class="cv-part hidden" id="tech-skills">
+            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+            <ul>
+                <li>Windows Installation & Software Setup</li>
+                <li>Basic Network Maintenance & Troubleshooting</li>
+                <li>Hardware Diagnostics & Repair</li>
+                <li>Printer Setup & Problem Solving</li>
+                <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+                <li>Adobe Photoshop (Basic to Intermediate Design)</li>
+                <li>IT Support & Help Desk Assistance</li>
+                <li>Basic Command Line (CMD) Usage</li>
+                <li>Basic Router Configuration</li>
+            </ul>
+        </section>
+
+        <section class="cv-part hidden" id="soft-skills">
+            <h2><i class="fas fa-handshake"></i> Soft Skills</h2>
+            <ul>
+                <li>Problem Solving</li>
+                <li>Team Collaboration</li>
+                <li>Communication</li>
+                <li>Time Management</li>
+                <li>Willingness to Learn New Technologies</li>
+            </ul>
+        </section>
+
+        <section class="cv-part hidden" id="interests">
+            <h2><i class="fas fa-chart-line"></i> Interests</h2>
+            <ul>
+                <li>Graphic Design with Photoshop</li>
+                <li>Exploring IT tools and technologies</li>
+                <li>Helping others with computer problems</li>
+                <li>Reading tech news and articles</li>
+            </ul>
+        </section>
+
+        <section class="cv-part hidden" id="languages">
+            <h2><i class="fas fa-globe-asia"></i> Languages</h2>
+            <div class="language-item">
+                <strong>KHMER : Native</strong>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="language-item">
+                <strong>ENGLISH : Intermediate</strong>
+                <div class="skill-bar">
+                    <div class="skill-level" style="width: 60%;"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="contact-section" id="contact">
+        <h2><i class="fas fa-phone-alt"></i> Get In Touch</h2>
+        <div class="contact-links">
+            <a href="https://drive.google.com/file/d/1HklBsCqNTpwwLC5JMWLdM8LE7qc7OavP/view?usp=drive_link" target="_blank"><i class="fas fa-award"></i> CCNA Certificate</a>
+            
+            <a href="tel:+85570605799"> Call: +855 70 605 799</a>
+            <a href="mailto:suostheansou@gmail.com"> Mail: suostheansou@gmail.com</a>
+            <a href="https://t.me/Theansou" target="_blank"> Telegram</a>
+        </div>
+    </section>
+
+    <div class="footer">
+        © 2025 SUOS THEANSOU | General Department of National Treasury
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cvParts = document.querySelectorAll('.cv-part');
+
+            // ប្រើ Intersection Observer ដើម្បីតាមដាននៅពេល Element ចូលក្នុង Viewport
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // បើវាចូលក្នុង Viewport ឲ្យវាបង្ហាញ (show)
+                        entry.target.classList.add('show');
+                        entry.target.classList.remove('hidden');
+                        observer.unobserve(entry.target); // បញ្ឈប់ការតាមដាន
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.2 // ចាប់ផ្តើម Animation នៅពេល 20% នៃ Element ចូល
+            });
+
+            // ដាក់ class "hidden" លើរាល់ផ្នែក CV ហើយចាប់ផ្តើមតាមដាន
+            cvParts.forEach(part => {
+                if (!part.classList.contains('hidden')) {
+                    part.classList.add('hidden');
+                }
+                observer.observe(part);
+            });
+        });
+    </script>
+</body>
+
+</html>
